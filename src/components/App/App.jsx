@@ -5,7 +5,7 @@ import '../../styles/app.css'
 
 const App = () => (
   <div className="super">
-    <h5 className="titleCalculator">WEB CALCULATOR</h5>
+    <h5 className="titleCalculator">WEB CALCULATOR &#128526;</h5>
     <div className="padre">
       <Pantalla />
       <div className="buttons">
