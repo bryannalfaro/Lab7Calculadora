@@ -1,3 +1,5 @@
-.dj{
-    color: red;
+
+
+.equal{
+    grid-column: span 2;
 }

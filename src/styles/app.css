@@ -1,8 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Merriweather+Sans:ital,wght@1,500&display=swap');
+
 .padre{
     width:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: black;
+}
+
+.titleCalculator{
+    font-family: 'Merriweather Sans', sans-serif;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 100px);
+}
+
+.buttons > button{
+    border: solid white;
+    background-color: rgba(255, 255, 255, .75);
+    transition: .5s;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.buttons > button:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+Button{
+    background-color:green;
 }
