@@ -41,7 +41,7 @@ const App = () => {
       console.log(texto)
       console.log(segTexto)
       const res = operaciones.suma(Number(texto), Number(segTexto))
-      if (res < 0) {
+      if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
       } else {
         setDespliegue(res)
@@ -50,7 +50,7 @@ const App = () => {
       }
     } else if (operando === '-') {
       const res = operaciones.resta(Number(texto), Number(segTexto))
-      if (res < 0) {
+      if (res < 0 || res > 999999999) {
         console.log('negative')
         setDespliegue('ERROR')
       } else {
@@ -60,7 +60,7 @@ const App = () => {
       }
     } else if (operando === 'x') {
       const res = operaciones.producto(Number(texto), Number(segTexto))
-      if (res < 0) {
+      if (res < 0 || res > 999999999) {
         console.log('negative')
         setDespliegue('ERROR')
       } else {
@@ -70,7 +70,7 @@ const App = () => {
       }
     } else if (operando === '%') {
       const res = operaciones.modulo(Number(texto), Number(segTexto))
-      if (res < 0) {
+      if (res < 0 || res > 999999999) {
         console.log('negative')
         setDespliegue('ERROR')
       } else {
