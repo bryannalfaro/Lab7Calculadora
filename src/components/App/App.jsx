@@ -68,7 +68,7 @@ const App = () => {
     } else if (operando === '%') {
       const res = operaciones.modulo(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
-        setDespliegue('ERROR &#128526;')
+        setDespliegue('ERROR')
       } else {
         setDespliegue(res)
         setTexto(res)
