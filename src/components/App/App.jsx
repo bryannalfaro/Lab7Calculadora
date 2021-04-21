@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../Button/Button'
 import Pantalla from '../Pantalla/Pantalla'
+import operaciones from '../../operaciones/operaciones'
 import '../../styles/app.css'
 
 const App = () => {
@@ -8,7 +9,7 @@ const App = () => {
   const [segTexto, setSegTexto] = useState('')
   const [operando, setOperando] = useState('')
   const [despliegue, setDespliegue] = useState('')
-  const [contador, setContador] = useState(0)
+  const [contador, setContador] = useState(0) // contador de operandos
 
   const clicke = (v) => {
     if (operando !== '') {
@@ -39,22 +40,44 @@ const App = () => {
     if (operando === '+') {
       console.log(texto)
       console.log(segTexto)
-      setDespliegue(Number(texto) + Number(segTexto))
-      setTexto(Number(texto) + Number(segTexto))
-      setSegTexto('')
+      const res = operaciones.suma(Number(texto), Number(segTexto))
+      if (res < 0) {
+        setDespliegue('ERROR')
+      } else {
+        setDespliegue(res)
+        setTexto(res)
+        setSegTexto('')
+      }
     } else if (operando === '-') {
-      console.log(texto)
-      console.log(segTexto)
-      setDespliegue(Number(texto) - Number(segTexto))
-      setTexto(Number(texto) - Number(segTexto))
-      setSegTexto('')
+      const res = operaciones.resta(Number(texto), Number(segTexto))
+      if (res < 0) {
+        console.log('negative')
+        setDespliegue('ERROR')
+      } else {
+        setDespliegue(res)
+        setTexto(res)
+        setSegTexto('')
+      }
     } else if (operando === 'x') {
-      console.log('here')
-      console.log(texto)
-      console.log(segTexto)
-      setDespliegue(Number(texto) * Number(segTexto))
-      setTexto(Number(texto) * Number(segTexto))
-      setSegTexto('')
+      const res = operaciones.producto(Number(texto), Number(segTexto))
+      if (res < 0) {
+        console.log('negative')
+        setDespliegue('ERROR')
+      } else {
+        setDespliegue(res)
+        setTexto(res)
+        setSegTexto('')
+      }
+    } else if (operando === '%') {
+      const res = operaciones.modulo(Number(texto), Number(segTexto))
+      if (res < 0) {
+        console.log('negative')
+        setDespliegue('ERROR')
+      } else {
+        setDespliegue(res)
+        setTexto(res)
+        setSegTexto('')
+      }
     }
   }
 
@@ -101,7 +124,7 @@ const App = () => {
         <div className="buttons">
           <Button clicke={clear} texto="C" />
           <Button texto="+/-" />
-          <Button texto="%" />
+          <Button clicke={operandos} texto="%" />
           <Button texto="/" />
           <Button clicke={clicke} texto="7" />
           <Button clicke={clicke} texto="8" />
