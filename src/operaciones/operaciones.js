@@ -14,6 +14,10 @@ function modulo(num1, num2) {
   return num1 % num2
 }
 
+function division(num1, num2) {
+  return num1 / num2
+}
+
 module.exports = {
-  suma, resta, producto, modulo,
+  suma, resta, producto, modulo, division,
 }

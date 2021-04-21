@@ -13,10 +13,11 @@ const App = () => {
 
   const clicke = (v) => {
     if (operando !== '') {
-      setSegTexto(segTexto + v)
-    } else {
+      if (segTexto.length < 9) {
+        setSegTexto(segTexto + v)
+      }
+    } else if (texto.length < 9) {
       setTexto(texto + v)
-      console.log('Text', texto)
     }
   }
 
@@ -35,11 +36,9 @@ const App = () => {
     setSegTexto('')
     setContador(0)
   }
+
   const oper = () => {
-    console.log('esta en operacion')
     if (operando === '+') {
-      console.log(texto)
-      console.log(segTexto)
       const res = operaciones.suma(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
@@ -51,7 +50,6 @@ const App = () => {
     } else if (operando === '-') {
       const res = operaciones.resta(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
-        console.log('negative')
         setDespliegue('ERROR')
       } else {
         setDespliegue(res)
@@ -61,7 +59,6 @@ const App = () => {
     } else if (operando === 'x') {
       const res = operaciones.producto(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
-        console.log('negative')
         setDespliegue('ERROR')
       } else {
         setDespliegue(res)
@@ -71,9 +68,27 @@ const App = () => {
     } else if (operando === '%') {
       const res = operaciones.modulo(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
-        console.log('negative')
-        setDespliegue('ERROR')
+        setDespliegue('ERROR &#128526;')
       } else {
+        setDespliegue(res)
+        setTexto(res)
+        setSegTexto('')
+      }
+    } else if (operando === '/') {
+      const res = operaciones.division(Number(texto), Number(segTexto))
+      if (res < 0 || res > 999999999) {
+        if (res.toString().length > 9) {
+          setDespliegue(res.toString().split(0, 9))
+          setTexto(res.toString().split(0, 9))
+          setSegTexto('')
+        }
+        setDespliegue('ERROR')
+      } else if (res.toString().length > 9) {
+        const a = Number(res.toString().slice(0, 9))
+        setDespliegue(a)
+        setTexto(a)
+        setSegTexto('')
+      } else if (res.toString().length <= 9) {
         setDespliegue(res)
         setTexto(res)
         setSegTexto('')
@@ -82,33 +97,25 @@ const App = () => {
   }
 
   const operandos = (val) => {
-    console.log('dentro de operandos', contador)
     if (contador === 1) {
       if (val !== operando) {
-        console.log('entro')
         if (segTexto !== '') {
           oper()
           setContador(contador + 1)
         }
         setOperando(val)
       }
-      console.log('contador', contador)
       setContador(contador + 1)
-      console.log('contador2', contador)
       setDespliegue('')
     } else {
       setOperando(val)
-      console.log('contador', contador)
       setContador(contador + 1)
-      console.log('contador2', contador)
       setDespliegue('')
     }
   }
 
   useEffect(() => {
     if (contador === 2) {
-      console.log('1', texto)
-      console.log('2', segTexto)
       if (segTexto !== '') {
         oper()
       }
@@ -122,24 +129,24 @@ const App = () => {
       <div className="padre">
         <Pantalla value={despliegue} />
         <div className="buttons">
-          <Button clicke={clear} texto="C" />
-          <Button texto="+/-" />
-          <Button clicke={operandos} texto="%" />
-          <Button texto="/" />
-          <Button clicke={clicke} texto="7" />
-          <Button clicke={clicke} texto="8" />
-          <Button clicke={clicke} texto="9" />
-          <Button clicke={operandos} texto="x" />
-          <Button clicke={clicke} texto="4" />
-          <Button clicke={clicke} texto="5" />
-          <Button clicke={clicke} texto="6" />
-          <Button clicke={operandos} texto="-" />
-          <Button clicke={clicke} texto="1" />
-          <Button clicke={clicke} texto="2" />
-          <Button clicke={clicke} texto="3" />
-          <Button clicke={operandos} texto="+" />
-          <Button clicke={clicke} texto="0" />
-          <Button texto="." />
+          <Button classe="clear" clicke={clear} texto="C" />
+          <Button classe="masmen" texto="+/-" />
+          <Button classe="modulo" clicke={operandos} texto="%" />
+          <Button classe="division" clicke={operandos} texto="/" />
+          <Button classe="siete" clicke={clicke} texto="7" />
+          <Button classe="ocho" clicke={clicke} texto="8" />
+          <Button classe="nueve" clicke={clicke} texto="9" />
+          <Button classe="multi" clicke={operandos} texto="x" />
+          <Button classe="cuatro" clicke={clicke} texto="4" />
+          <Button classe="cinco" clicke={clicke} texto="5" />
+          <Button classe="seis" clicke={clicke} texto="6" />
+          <Button classe="resta" clicke={operandos} texto="-" />
+          <Button classe="uno" clicke={clicke} texto="1" />
+          <Button classe="dos" clicke={clicke} texto="2" />
+          <Button classe="tres" clicke={clicke} texto="3" />
+          <Button classe="suma" clicke={operandos} texto="+" />
+          <Button classe="cero" clicke={clicke} texto="0" />
+          <Button classe="punto" texto="." />
           <Button classe="equal" clicke={oper} texto="=" />
         </div>
       </div>
