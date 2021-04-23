@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../../styles/pantalla.css'
 
-const Pantalla = ({ value = 0 }) => (
+const Pantalla = ({ value = '0' }) => (
   <div className="display">{value}</div>
 )
 

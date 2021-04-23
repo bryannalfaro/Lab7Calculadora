@@ -43,7 +43,7 @@ const App = () => {
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
       } else {
-        setDespliegue(res)
+        setDespliegue(res.toString())
         setTexto(res)
         setSegTexto('')
       }
@@ -52,7 +52,7 @@ const App = () => {
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
       } else {
-        setDespliegue(res)
+        setDespliegue(res.toString())
         setTexto(res)
         setSegTexto('')
       }
@@ -61,7 +61,7 @@ const App = () => {
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
       } else {
-        setDespliegue(res)
+        setDespliegue(res.toString())
         setTexto(res)
         setSegTexto('')
       }
@@ -70,7 +70,7 @@ const App = () => {
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
       } else {
-        setDespliegue(res)
+        setDespliegue(res.toString())
         setTexto(res)
         setSegTexto('')
       }
@@ -85,11 +85,11 @@ const App = () => {
         setDespliegue('ERROR')
       } else if (res.toString().length > 9) {
         const a = Number(res.toString().slice(0, 9))
-        setDespliegue(a)
+        setDespliegue(a.toString())
         setTexto(a)
         setSegTexto('')
       } else if (res.toString().length <= 9) {
-        setDespliegue(res)
+        setDespliegue(res.toString())
         setTexto(res)
         setSegTexto('')
       }
@@ -127,10 +127,10 @@ const App = () => {
     <div className="super">
       <h5 className="titleCalculator">WEB CALCULATOR &#128526;</h5>
       <div className="padre">
-        <Pantalla value={despliegue} />
+        <Pantalla value={despliegue.toString()} />
         <div className="buttons">
           <Button classe="clear" clicke={clear} texto="C" />
-          <Button classe="masmen" texto="+/-" />
+          <Button classe="masmen" clicke={clear} texto="+/-" />
           <Button classe="modulo" clicke={operandos} texto="%" />
           <Button classe="division" clicke={operandos} texto="/" />
           <Button classe="siete" clicke={clicke} texto="7" />
@@ -146,7 +146,7 @@ const App = () => {
           <Button classe="tres" clicke={clicke} texto="3" />
           <Button classe="suma" clicke={operandos} texto="+" />
           <Button classe="cero" clicke={clicke} texto="0" />
-          <Button classe="punto" texto="." />
+          <Button classe="punto" clicke={clicke} texto="." />
           <Button classe="equal" clicke={oper} texto="=" />
         </div>
       </div>
