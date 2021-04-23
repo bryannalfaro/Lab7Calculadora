@@ -185,15 +185,22 @@ describe('Test for requirements', () => {
   test('ERROR with result > 999999999', () => {
     // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
-    const buttonsub = screen.getByText('-')
-    const number1 = screen.getByText('5')
-    const number2 = screen.getByText('2')
+    const buttonmult = screen.getByText('x')
+    const number1 = screen.getByText('1')
+    const number2 = screen.getByText('0')
     const display = container.getElementsByClassName('display')
     const equal = screen.getByText('=')
 
-    userEvent.click(number2)
-    userEvent.click(buttonsub)
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 10; i++) {
+      userEvent.click(number1)
+    }
+    userEvent.click(buttonmult)
     userEvent.click(number1)
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < 5; i++) {
+      userEvent.click(number2)
+    }
     userEvent.click(equal)
     expect(display[0].textContent).toBe('ERROR')
   })
