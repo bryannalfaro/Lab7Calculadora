@@ -10,6 +10,14 @@ const App = () => {
   const [operando, setOperando] = useState('')
   const [despliegue, setDespliegue] = useState('')
   const [contador, setContador] = useState(0) // contador de operandos
+  const [posX, setPosX] = useState()
+  const [posY, setPosY] = useState()
+
+  // eslint-disable-next-line no-undef
+  window.addEventListener('mousemove', (e) => {
+    setPosX(e.pageX)
+    setPosY(e.pageY)
+  })
 
   const clicke = (v) => {
     if (operando !== '') {
@@ -124,33 +132,38 @@ const App = () => {
   }, [contador])
 
   return (
-    <div className="super">
-      <h5 className="titleCalculator">WEB CALCULATOR &#128526;</h5>
-      <div className="padre">
-        <Pantalla value={despliegue.toString()} />
-        <div className="buttons">
-          <Button classe="clear" clicke={clear} texto="C" />
-          <Button classe="masmen" clicke={clear} texto="+/-" />
-          <Button classe="modulo" clicke={operandos} texto="%" />
-          <Button classe="division" clicke={operandos} texto="/" />
-          <Button classe="siete" clicke={clicke} texto="7" />
-          <Button classe="ocho" clicke={clicke} texto="8" />
-          <Button classe="nueve" clicke={clicke} texto="9" />
-          <Button classe="multi" clicke={operandos} texto="x" />
-          <Button classe="cuatro" clicke={clicke} texto="4" />
-          <Button classe="cinco" clicke={clicke} texto="5" />
-          <Button classe="seis" clicke={clicke} texto="6" />
-          <Button classe="resta" clicke={operandos} texto="-" />
-          <Button classe="uno" clicke={clicke} texto="1" />
-          <Button classe="dos" clicke={clicke} texto="2" />
-          <Button classe="tres" clicke={clicke} texto="3" />
-          <Button classe="suma" clicke={operandos} texto="+" />
-          <Button classe="cero" clicke={clicke} texto="0" />
-          <Button classe="punto" clicke={clicke} texto="." />
-          <Button classe="equal" clicke={oper} texto="=" />
+    <div className="main">
+      <div className="image" />
+      <div className="super">
+        <div className="cursor" style={{ left: `${posX}px`, top: `${posY}px` }} />
+        <h5 className="titleCalculator">WEB CALCULATOR &#128526;</h5>
+        <div className="padre">
+          <Pantalla value={despliegue.toString()} />
+          <div className="buttons">
+            <Button classe="op clear" clicke={clear} texto="C" />
+            <Button classe="op masmen" clicke={clear} texto="+/-" />
+            <Button classe="op modulo" clicke={operandos} texto="%" />
+            <Button classe="op division" clicke={operandos} texto="/" />
+            <Button classe="siete" clicke={clicke} texto="7" />
+            <Button classe="ocho" clicke={clicke} texto="8" />
+            <Button classe="nueve" clicke={clicke} texto="9" />
+            <Button classe="op multi" clicke={operandos} texto="x" />
+            <Button classe="cuatro" clicke={clicke} texto="4" />
+            <Button classe="cinco" clicke={clicke} texto="5" />
+            <Button classe="seis" clicke={clicke} texto="6" />
+            <Button classe=" op resta" clicke={operandos} texto="-" />
+            <Button classe="uno" clicke={clicke} texto="1" />
+            <Button classe="dos" clicke={clicke} texto="2" />
+            <Button classe="tres" clicke={clicke} texto="3" />
+            <Button classe="op suma" clicke={operandos} texto="+" />
+            <Button classe="op cero" clicke={clicke} texto="0" />
+            <Button classe="op punto" clicke={clicke} texto="." />
+            <Button classe="op equal" clicke={oper} texto="=" />
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 

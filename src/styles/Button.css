@@ -3,3 +3,49 @@
 .equal{
     grid-column: span 2;
 }
+
+*{
+    font-weight: bold;
+}
+
+
+.op.multi{
+    background:rgb(139, 12, 12);
+    color: white;
+}
+.op.suma{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.resta{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.masmen{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.equal{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.punto{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.cero{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.modulo{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.division{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
+.op.clear{
+    background-color:rgb(139, 12, 12);
+    color: white;
+}
