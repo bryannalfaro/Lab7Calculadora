@@ -22,10 +22,18 @@ const App = () => {
   const clicke = (v) => {
     if (operando !== '') {
       if (segTexto.length < 9) {
-        setSegTexto(segTexto + v)
+        if (v === ('.') && !despliegue.includes('.')) {
+          setSegTexto(segTexto + v)
+        } else if (v !== '.') {
+          setSegTexto(segTexto + v)
+        }
       }
     } else if (texto.length < 9) {
-      setTexto(texto + v)
+      if (v === ('.') && !despliegue.includes('.')) {
+        setTexto(texto + v)
+      } else if (v !== '.') {
+        setTexto(texto + v)
+      }
     }
   }
 
@@ -50,6 +58,10 @@ const App = () => {
       const res = operaciones.suma(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+      } else if (res.toString().length > 9) {
+        setDespliegue(res.toString().slice(0, 9))
+        setTexto(res.toString().slice(0, 9))
+        setSegTexto('')
       } else {
         setDespliegue(res.toString())
         setTexto(res)
@@ -59,6 +71,10 @@ const App = () => {
       const res = operaciones.resta(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+      } else if (res.toString().length > 9) {
+        setDespliegue(res.toString().slice(0, 9))
+        setTexto(res.toString().slice(0, 9))
+        setSegTexto('')
       } else {
         setDespliegue(res.toString())
         setTexto(res)
@@ -68,6 +84,10 @@ const App = () => {
       const res = operaciones.producto(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+      } else if (res.toString().length > 9) {
+        setDespliegue(res.toString().slice(0, 9))
+        setTexto(res.toString().slice(0, 9))
+        setSegTexto('')
       } else {
         setDespliegue(res.toString())
         setTexto(res)
@@ -77,6 +97,10 @@ const App = () => {
       const res = operaciones.modulo(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+      } else if (res.toString().length > 9) {
+        setDespliegue(res.toString().slice(0, 9))
+        setTexto(res.toString().slice(0, 9))
+        setSegTexto('')
       } else {
         setDespliegue(res.toString())
         setTexto(res)
