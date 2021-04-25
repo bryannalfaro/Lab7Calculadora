@@ -12,12 +12,25 @@ const App = () => {
   const [contador, setContador] = useState(0) // contador de operandos
   const [posX, setPosX] = useState()
   const [posY, setPosY] = useState()
+  const [control, setControl] = useState(true)
 
   // eslint-disable-next-line no-undef
   window.addEventListener('mousemove', (e) => {
     setPosX(e.pageX)
     setPosY(e.pageY)
   })
+  let style = {
+    pointerEvents: 'auto',
+  }
+  if (control === false) {
+    // eslint-disable-next-line no-unused-vars
+    style = {
+      color: 'green',
+      pointerEvents: 'none',
+      disabled: true,
+
+    }
+  }
 
   const clicke = (v) => {
     if (operando !== '') {
@@ -51,6 +64,7 @@ const App = () => {
     setOperando('')
     setSegTexto('')
     setContador(0)
+    setControl(true)
   }
 
   const oper = () => {
@@ -58,6 +72,7 @@ const App = () => {
       const res = operaciones.suma(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+        setControl(false)
       } else if (res.toString().length > 9) {
         setDespliegue(res.toString().slice(0, 9))
         setTexto(res.toString().slice(0, 9))
@@ -71,6 +86,7 @@ const App = () => {
       const res = operaciones.resta(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+        setControl(false)
       } else if (res.toString().length > 9) {
         setDespliegue(res.toString().slice(0, 9))
         setTexto(res.toString().slice(0, 9))
@@ -165,24 +181,24 @@ const App = () => {
           <Pantalla value={despliegue.toString()} />
           <div className="buttons">
             <Button classe="op clear" clicke={clear} texto="C" />
-            <Button classe="op masmen" clicke={clear} texto="+/-" />
-            <Button classe="op modulo" clicke={operandos} texto="%" />
-            <Button classe="op division" clicke={operandos} texto="/" />
-            <Button classe="siete" clicke={clicke} texto="7" />
-            <Button classe="ocho" clicke={clicke} texto="8" />
-            <Button classe="nueve" clicke={clicke} texto="9" />
-            <Button classe="op multi" clicke={operandos} texto="x" />
-            <Button classe="cuatro" clicke={clicke} texto="4" />
-            <Button classe="cinco" clicke={clicke} texto="5" />
-            <Button classe="seis" clicke={clicke} texto="6" />
-            <Button classe=" op resta" clicke={operandos} texto="-" />
-            <Button classe="uno" clicke={clicke} texto="1" />
-            <Button classe="dos" clicke={clicke} texto="2" />
-            <Button classe="tres" clicke={clicke} texto="3" />
-            <Button classe="op suma" clicke={operandos} texto="+" />
-            <Button classe="op cero" clicke={clicke} texto="0" />
-            <Button classe="op punto" clicke={clicke} texto="." />
-            <Button classe="op equal" clicke={oper} texto="=" />
+            <Button classe="op masmen" clicke={clear} texto="+/-" style={style} />
+            <Button classe="op modulo" clicke={operandos} texto="%" style={style} />
+            <Button classe="op division" clicke={operandos} texto="/" style={style} />
+            <Button classe="siete" clicke={clicke} texto="7" style={style} />
+            <Button classe="ocho" clicke={clicke} texto="8" style={style} />
+            <Button classe="nueve" clicke={clicke} texto="9" style={style} />
+            <Button classe="op multi" clicke={operandos} texto="x" style={style} />
+            <Button classe="cuatro" clicke={clicke} texto="4" style={style} />
+            <Button classe="cinco" clicke={clicke} texto="5" style={style} />
+            <Button classe="seis" clicke={clicke} texto="6" style={style} />
+            <Button classe=" op resta" clicke={operandos} texto="-" style={style} />
+            <Button classe="uno" clicke={clicke} texto="1" style={style} />
+            <Button classe="dos" clicke={clicke} texto="2" style={style} />
+            <Button classe="tres" clicke={clicke} texto="3" style={style} />
+            <Button classe="op suma" clicke={operandos} texto="+" style={style} />
+            <Button classe="op cero" clicke={clicke} texto="0" style={style} />
+            <Button classe="op punto" clicke={clicke} texto="." style={style} />
+            <Button classe="op equal" clicke={oper} texto="=" style={style} />
           </div>
         </div>
       </div>
