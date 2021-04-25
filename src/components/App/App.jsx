@@ -22,8 +22,12 @@ const App = () => {
   let style = {
     pointerEvents: 'auto',
   }
+
+  const style2 = {
+    pointerEvents: 'auto',
+  }
+
   if (control === false) {
-    // eslint-disable-next-line no-unused-vars
     style = {
       color: 'green',
       pointerEvents: 'none',
@@ -180,7 +184,7 @@ const App = () => {
         <div className="padre">
           <Pantalla value={despliegue.toString()} />
           <div className="buttons">
-            <Button classe="op clear" clicke={clear} texto="C" />
+            <Button classe="op clear" clicke={clear} texto="C" style={style2} />
             <Button classe="op masmen" clicke={clear} texto="+/-" style={style} />
             <Button classe="op modulo" clicke={operandos} texto="%" style={style} />
             <Button classe="op division" clicke={operandos} texto="/" style={style} />

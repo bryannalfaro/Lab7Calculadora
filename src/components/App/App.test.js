@@ -5,11 +5,9 @@ import App from './App'
 
 describe('Basic operations test', () => {
   test('App renders', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     render(<App />)
   })
   test('Plus two numbers', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonplus = screen.getByText('+')
     const number1 = screen.getByText('1')
@@ -24,7 +22,6 @@ describe('Basic operations test', () => {
     expect(display[0].textContent).toBe('3')
   })
   test('Sub two numbers', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonsub = screen.getByText('-')
     const number1 = screen.getByText('9')
@@ -39,7 +36,6 @@ describe('Basic operations test', () => {
     expect(display[0].textContent).toBe('7')
   })
   test('Mult two numbers', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonmult = screen.getByText('x')
     const number1 = screen.getByText('5')
@@ -54,7 +50,6 @@ describe('Basic operations test', () => {
     expect(display[0].textContent).toBe('10')
   })
   test('Divide two numbers', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttondiv = screen.getByText('/')
     const number1 = screen.getByText('4')
@@ -69,7 +64,6 @@ describe('Basic operations test', () => {
     expect(display[0].textContent).toBe('2')
   })
   test('Mod % of  two numbers', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonmod = screen.getByText('%')
     const number1 = screen.getByText('9')
@@ -133,7 +127,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('6')
   })
   test('Operate numbers with more than one digit', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonmult = screen.getByText('x')
     const number1 = screen.getByText('5')
@@ -150,7 +143,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('1210')
   })
   test('Clear button working', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonplus = screen.getByText('+')
     const number1 = screen.getByText('5')
@@ -168,7 +160,6 @@ describe('Test for requirements', () => {
   })
 
   test('ERROR with negative result', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonsub = screen.getByText('-')
     const number1 = screen.getByText('5')
@@ -183,7 +174,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('ERROR')
   })
   test('ERROR with result > 999999999', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonmult = screen.getByText('x')
     const number1 = screen.getByText('1')
@@ -205,7 +195,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('ERROR')
   })
   test('Ignore display with more than 9 digits', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonsub = screen.getByText('-')
     // eslint-disable-next-line no-plusplus
@@ -224,7 +213,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('555555553')
   })
   test('Divide numbers with restriction', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttondiv = screen.getByText('/')
     // eslint-disable-next-line no-plusplus
@@ -241,7 +229,6 @@ describe('Test for requirements', () => {
     expect(display[0].textContent).toBe('3.1428571')
   })
   test('Decimal product for demostrate use of dot', () => {
-    // eslint-disable-next-line react/jsx-filename-extension
     const { container } = render(<App />)
     const buttonmult = screen.getByText('x')
     // eslint-disable-next-line no-plusplus

@@ -21,5 +21,6 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'never'],
+    'react/jsx-filename-extension': 'off',
   },
 }
