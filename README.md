@@ -41,7 +41,7 @@ You can download it in: https://nodejs.org/es/
 ### Now run
 ## `npm run serve`
 #### The app will be displayed in http://localhost:4000
-## For testingg you need to run
+## For testing you need to run
 ## `npm test`
 
 - ## Author
