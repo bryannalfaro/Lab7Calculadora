@@ -104,6 +104,7 @@ const App = () => {
       const res = operaciones.producto(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+        setControl(false)
       } else if (res.toString().length > 9) {
         setDespliegue(res.toString().slice(0, 9))
         setTexto(res.toString().slice(0, 9))
@@ -117,6 +118,7 @@ const App = () => {
       const res = operaciones.modulo(Number(texto), Number(segTexto))
       if (res < 0 || res > 999999999) {
         setDespliegue('ERROR')
+        setControl(false)
       } else if (res.toString().length > 9) {
         setDespliegue(res.toString().slice(0, 9))
         setTexto(res.toString().slice(0, 9))
@@ -135,6 +137,7 @@ const App = () => {
           setSegTexto('')
         }
         setDespliegue('ERROR')
+        setControl(false)
       } else if (res.toString().length > 9) {
         const a = Number(res.toString().slice(0, 9))
         setDespliegue(a.toString())
