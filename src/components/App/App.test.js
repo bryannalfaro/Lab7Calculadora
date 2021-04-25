@@ -223,4 +223,52 @@ describe('Test for requirements', () => {
     userEvent.click(equal)
     expect(display[0].textContent).toBe('555555553')
   })
+  test('Divide numbers with restriction', () => {
+    // eslint-disable-next-line react/jsx-filename-extension
+    const { container } = render(<App />)
+    const buttondiv = screen.getByText('/')
+    // eslint-disable-next-line no-plusplus
+    const number1 = screen.getByText('7')
+    const number2 = screen.getByText('2')
+    const display = container.getElementsByClassName('display')
+    const equal = screen.getByText('=')
+
+    userEvent.click(number2)
+    userEvent.click(number2)
+    userEvent.click(buttondiv)
+    userEvent.click(number1)
+    userEvent.click(equal)
+    expect(display[0].textContent).toBe('3.1428571')
+  })
+  test('Decimal product for demostrate use of dot', () => {
+    // eslint-disable-next-line react/jsx-filename-extension
+    const { container } = render(<App />)
+    const buttonmult = screen.getByText('x')
+    // eslint-disable-next-line no-plusplus
+    const number1 = screen.getByText('1')
+    const number2 = screen.getByText('2')
+    const number3 = screen.getByText('3')
+    const dot = screen.getByText('.')
+    const display = container.getElementsByClassName('display')
+    const equal = screen.getByText('=')
+
+    userEvent.click(number1)
+    userEvent.click(dot)
+    userEvent.click(number2)
+    userEvent.click(number3)
+    userEvent.click(number2)
+    userEvent.click(number3)
+    userEvent.click(number2)
+    userEvent.click(number3)
+    userEvent.click(buttonmult)
+    userEvent.click(number3)
+    userEvent.click(dot)
+    userEvent.click(number2)
+    userEvent.click(number3)
+    userEvent.click(number2)
+    userEvent.click(number3)
+    userEvent.click(equal)
+    // The real result is 3.9832376329 but is taking the restriction
+    expect(display[0].textContent).toBe('3.9832376')
+  })
 })
